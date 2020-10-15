@@ -5,17 +5,14 @@ using UnityEngine;
 
 public class boss 
 {
-    int MP = 53;
+   
 
-    public void Magic()
+    public  int Magic(int MP)
     {
-        for (int i = MP; i > 5; i -= 5)
-        {
-            MP -= 5;
-            Debug.Log("魔法攻撃をした。残りMPは" + MP);
-        }
 
-        Debug.Log("MPが足りないため魔法が使えない。");
+        int usedMP = MP - 5;
+        return usedMP;
+       
     }
 
 
@@ -27,10 +24,19 @@ public class test2 : MonoBehaviour
     void Start()
       {
         boss Testboss = new boss ();
-           
-            Testboss.Magic();
 
+        int MagicP = 53;
 
-      }
+        for (int i = MagicP; i > 5; i -= 5)
+        {
+
+            int UsedMP = Testboss.Magic(MagicP);
+            MagicP = UsedMP;
+
+            Debug.Log("魔法攻撃をした。残りMPは" + UsedMP);
+        }
+
+        Debug.Log("MPが足りないため魔法が使えない。");
+    }
 }
 
