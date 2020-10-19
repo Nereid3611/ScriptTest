@@ -5,38 +5,45 @@ using UnityEngine;
 
 public class boss 
 {
-   
+    public int MagicP = 53;
 
-    public  int Magic(int MP)
+    public bool Magic()
     {
-
-        int usedMP = MP - 5;
-        return usedMP;
+        if (MagicP >= 5 )
+        {
+            MagicP -= 5;
+            Debug.Log("魔法攻撃をした。残りMPは" + MagicP);
+            return true;
+            
+        }
+        else
+        {
+            Debug.Log("MPが足りないため魔法が使えない。");
+            return false;
+        }
+        
        
     }
 
 
 }
 public class test2 : MonoBehaviour
-{   
-    
+{
+    private bool MagicAttack = true ;
+
+    boss Testboss = new boss();
+
     // Start is called before the first frame update
     void Start()
-      {
-        boss Testboss = new boss ();
-
-        int MagicP = 53;
-
-        for (int i = MagicP; i > 5; i -= 5)
+    {
+        while (this.MagicAttack == true)
         {
-
-            int UsedMP = Testboss.Magic(MagicP);
-            MagicP = UsedMP;
-
-            Debug.Log("魔法攻撃をした。残りMPは" + UsedMP);
+            this.MagicAttack = Testboss.Magic();
         }
 
-        Debug.Log("MPが足りないため魔法が使えない。");
     }
+
+
+
 }
 
